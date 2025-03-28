@@ -1,4 +1,4 @@
-# Keg scale
+# Keg level
 The project was inspired by this project
 https://byo.com/project/diy-keg-beer-level-management-system
 
