@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": -4.9,
+      "left": -24.2,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -133.89,
+      "left": -272.47,
+      "attrs": { "pixels": "24", "background": "black" }
+    },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": -170.2,
+      "left": 156.2,
+      "attrs": { "type": "50kg" }
+    },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell2",
+      "top": 21.8,
+      "left": 156.2,
+      "attrs": { "type": "50kg" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "cell1:SCK", "esp:D15", "gold", [ "h-57.6", "v258.6" ] ],
+    [ "cell1:VCC", "esp:3V3", "red", [ "h-38.4", "v273.7" ] ],
+    [ "ring1:GND", "esp:GND.2", "black", [ "v28.8", "h-307.2", "v-96" ] ],
+    [ "ring1:VCC", "esp:3V3", "red", [ "v153.6", "h307.2", "v-62.3" ] ],
+    [ "esp:D13", "ring1:DIN", "green", [ "h0" ] ],
+    [ "cell1:GND", "esp:GND.1", "black", [ "h-48", "v287.7" ] ],
+    [ "cell1:DT", "esp:D12", "green", [ "h-220.8", "v258.7" ] ],
+    [ "cell2:DT", "esp:D2", "green", [ "h-28.8", "v66.7" ] ],
+    [ "cell2:SCK", "esp:D4", "yellow", [ "h-67.2", "v47.2" ] ],
+    [ "cell2:GND", "esp:GND.1", "black", [ "h-48", "v95.7", "h-9.6" ] ],
+    [ "cell2:VCC", "esp:3V3", "red", [ "h-38.4", "v76.8" ] ]
+  ],
+  "dependencies": {}
+}
