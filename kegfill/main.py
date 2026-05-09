@@ -20,14 +20,6 @@ hx.set_scale(scale)
 # ESP32 Pin assignment
 i2c = I2C(-1, pinassign.scl, pinassign.sda)
 
-# ESP8266 Pin assignment
-#i2c = I2C(-1, scl=Pin(5), sda=Pin(24))
-
-# Reset OLED
-pinassign.oledReset.value(0)
-time.sleep_ms(500)
-pinassign.oledReset.value(1)
-
 oled_width = 128
 oled_height = 64
 oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
