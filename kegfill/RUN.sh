@@ -19,4 +19,4 @@ ampy --port $PORT put  bignumber.py
 ampy --port $PORT put  hx711.py
 ampy --port $PORT put  pinassign.py
 ampy --port $PORT put  main.py
-timeout 2  ampy --port $PORT run $TOPDIR/reset/reset.py
+timeout 2  ampy --port $PORT run reset.py
