@@ -62,7 +62,7 @@ while True:
     print(data, offset_data, kg_data,keg_fract,gallons)
     oled.fill(0)
     gallon_string=str(gallons)
-    bignumber.twoDecimal(oled, kg)
+    bignumber.twoDecimal(oled, gallons)
     graphics = gfx.GFX(oled_width, oled_height, oled.pixel)
     histo=int(oled_height*keg_fract)
     histo_width=25
