@@ -21,12 +21,12 @@ time.sleep_ms(1000)
 hx = HX711(pinassign.pin_SCK, pinassign.pin_OUT)
 hx.set_offset(0);
 hx.set_gain(128)
-hx.set_scale(-28000)
+hx.set_scale(-21160)
 hx.set_time_constant(1)
 
-time.sleep_ms(50)
+time.sleep(5)
 
-hx.tare()
+hx.tare(25)
 
 #
 # Keg specifics
@@ -55,17 +55,18 @@ while True:
 
     # Tare with empty keg
     gallons=round(gallon_data,2)
+    kg=round(kg_data,2)
     keg_fract = gallon_data/2.5
 
 
     print(data, offset_data, kg_data,keg_fract,gallons)
     oled.fill(0)
     gallon_string=str(gallons)
-    bignumber.twoDecimal(oled, gallons)
+    bignumber.twoDecimal(oled, kg)
     graphics = gfx.GFX(oled_width, oled_height, oled.pixel)
     histo=int(oled_height*keg_fract)
     histo_width=25
     graphics.fill_rect(oled_width-histo_width, oled_height-histo, histo_width, histo,1)
 
     oled.show()
-    time.sleep(1)
+    time.sleep(0.5)
