@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": -170.2,
+      "left": 50.6,
+      "attrs": { "type": "50kg" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 118.34,
+      "left": 163.43,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "cell1:GND", "esp:GND.2", "black", [ "h-114.64", "v236.03" ] ],
+    [ "cell1:DT", "esp:D12", "green", [ "h-83.97", "v118.9" ] ],
+    [ "cell1:SCK", "esp:D15", "gold", [ "h-55.3", "v49.67", "h122.67", "v152" ] ],
+    [ "cell1:VCC", "esp:3V3", "red", [ "h-35.3", "v30.87", "h115.33", "v176.67" ] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v-28.8", "h-57.6", "v96" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v-19.2", "h-57.45", "v86.4" ] ],
+    [ "oled1:SCL", "esp:D22", "gold", [ "v0" ] ],
+    [ "esp:D21", "oled1:SDA", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
