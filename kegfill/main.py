@@ -1,20 +1,18 @@
 import time
 from hx711 import *
-from machine import Pin, I2C
-import ssd1306
+from machine import Pin, SPI
+import max7219
 import os
 import gfx
 import bignumber
 import pinassign
 
 # setup display
-i2c = I2C(-1, pinassign.scl, pinassign.sda)
-oled_width = 128
-oled_height = 64
-oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+spi = SPI(1, baudrate=10000000)
+screen = max7219.Max7219(32, 8, spi, Pin(10))
 
-oled.text('Taring scale...', 0, 20)
-oled.show()
+screen.text('Tare', -1, 0, 1)
+screen.show()
 time.sleep_ms(1000)
 
 # Setup scale Calibrate to kg
@@ -45,14 +43,6 @@ while True:
     kg_data = hx.get_units()
     gallon_data=kg_data/gallon_weight
 
-    #Tare empty scale (no keg)
-    #kd1=max(kg_data-empty_keg,0)
-    #kd2=min(kd1,delta_keg)
-    #keg_fract = kd2/delta_keg
-    #keg_percent=int(100*keg_fract)
-    #pints=int(kd2/pint_weight)
-    #gallons=round(kd2/gallon_weight,2)
-
     # Tare with empty keg
     gallons=round(gallon_data,2)
     kg=round(kg_data,2)
@@ -60,13 +50,9 @@ while True:
 
 
     print(data, offset_data, kg_data,keg_fract,gallons)
-    oled.fill(0)
+    screen.fill(0)
     gallon_string=str(gallons)
-    bignumber.twoDecimal(oled, gallons)
-    graphics = gfx.GFX(oled_width, oled_height, oled.pixel)
-    histo=int(oled_height*keg_fract)
-    histo_width=25
-    graphics.fill_rect(oled_width-histo_width, oled_height-histo, histo_width, histo,1)
+    screen.text(gallon_string, 0, 0, 1)
 
-    oled.show()
+    screen.show()
     time.sleep(0.5)

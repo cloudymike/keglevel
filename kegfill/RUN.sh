@@ -13,6 +13,7 @@ CURDIR=$(pwd)
 TOPDIR=${CURDIR%/*}
 
 ampy --port $PORT put  ssd1306.py
+ampy --port $PORT put  ./../libraries/micropython-max7219/max7219.py
 ampy --port $PORT put  gfx.py
 ampy --port $PORT put  bignumber.py
 
