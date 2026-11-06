@@ -47,14 +47,15 @@ module top()
     
     
     
-    translate([0,displayY,0])displayFront();
-    translate([boxX/2-boardX-thickness,boardHeight-thickness,26])rotate([0,90,0])mountPlate();
+    //translate([0,displayY,0])displayFront();
+    translate([boxX/2-boardX-thickness-1,boardHeight-thickness,28])rotate([0,90,0])mountPlate();
 }
 
 
 difference()
 {
 top();
-    translate([0,0,boxHeight/2+10])cube([boxX,boxY,boxHeight],center=true);
+    translate([0,0,boxHeight/2+12])cube([boxX,boxY,boxHeight],center=true);
     translate([-20,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    translate([0,-70,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
 }
