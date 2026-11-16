@@ -13,7 +13,7 @@ halfWidth=totalWidth/2;
 height=94;
 
 
-displayX=131.5+0.1;
+displayX=131.9+0.1;
 displayY=31.85+0.1;
 
 

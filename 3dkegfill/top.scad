@@ -60,7 +60,7 @@ module top()
             cylinder(r=screw_radius + thickness,h=boxHeight, center=true);
         }
         //Remove displayfront
-        translate([0,displayY,0])cube([132,displayHeight,thickness*10],center=true);
+        translate([0,displayY,0])cube([133,displayHeight,thickness*10],center=true);
         translate([0,scaleD/2+boardHeight,0])cylinder(d=scaleD,h=1000,center=true);
         
         //screwholes
@@ -96,7 +96,7 @@ module top()
 difference()
 {
 top();
-    //translate([0,0,boxHeight/2+12])cube([boxX,boxY,boxHeight],center=true);
+    translate([0,0,boxHeight/2+3])cube([boxX,boxY,boxHeight],center=true);
     //translate([-20,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
-    //translate([0,-70,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    translate([0,70,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
 }
