@@ -82,11 +82,19 @@ module top()
         offsetBottom=9;
         translate([0,scaleD/2+boardHeight,boxHeight-offsetBottom])rotate([90,0,30])cylinder(r=screw_radius,h=scaleD+4*thickness,center=true);
         translate([0,scaleD/2+boardHeight,boxHeight-offsetBottom])rotate([90,0,-30])cylinder(r=screw_radius,h=scaleD+4*thickness,center=true);
+        
+        // Hole to allow knurles on board. Yes it is a hack.
+        translate([-7,0,boxHeight-9])rotate([90,0,0])cylinder(r=3,h=100,center=true);
+        translate([-7,0,boxHeight-45])rotate([90,0,0])cylinder(r=3,h=100,center=true);
+        
+        //Hole for USB
+        translate([boxX/2,20-7-15.3,boxHeight/2])cube([10,10,15],center=true);
 
     }
     
-     
-    translate([0,displayY,0])displayFront();
+    //display 
+    //translate([0,displayY,0])displayFront();
+    //board
     translate([boxX/2-boardX-thickness-1,boardHeight-thickness,28])rotate([0,90,0])mountPlate();
     
 
@@ -96,7 +104,9 @@ module top()
 difference()
 {
 top();
-    translate([0,0,boxHeight/2+3])cube([boxX,boxY,boxHeight],center=true);
-    //translate([-20,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
-    translate([0,70,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    //translate([0,0,boxHeight/2+16])cube([boxX,boxY,boxHeight],center=true);
+    translate([-15,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    //translate([100,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    translate([0,-85,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    translate([0,95,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
 }

@@ -40,7 +40,18 @@ module centerPeg()
 //Actual mount plate without orienting transformations
 module mountPlateNT()
 {
-  boardPlate();
+  difference()
+  {
+    boardPlate();
+    translate([boardX/2-cornerHoleX,boardY/2-cornerHoleY,plateZ+mountHeight/2])cylinder(r=1.75,h=100,center=true);
+  translate([-boardX/2+cornerHoleX,boardY/2-cornerHoleY,plateZ+mountHeight/2])
+    cylinder(r=1.75,h=100,center=true);
+  translate([boardX/2-cornerHoleX,-boardY/2+cornerHoleY,plateZ+mountHeight/2])
+    cylinder(r=1.75,h=100,center=true);
+  translate([-boardX/2+cornerHoleX,-boardY/2+cornerHoleY,plateZ+mountHeight/2])
+    cylinder(r=1.75,h=100,center=true);
+    
+  }
   translate([centerHoleX-boardX/2,0,plateZ])centerPeg();
   translate([boardX/2-centerHoleX,0,plateZ])centerPeg();
   translate([boardX/2-cornerHoleX,boardY/2-cornerHoleY,plateZ+mountHeight/2])
