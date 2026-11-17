@@ -88,12 +88,12 @@ module top()
         translate([-7,0,boxHeight-45])rotate([90,0,0])cylinder(r=3,h=100,center=true);
         
         //Hole for USB
-        translate([boxX/2,20-7-15.3,boxHeight/2])cube([10,10,15],center=true);
+        translate([boxX/2,20-7-15.3-2,boxHeight/2+2.54])cube([10,10,15],center=true);
 
     }
     
     //display 
-    //translate([0,displayY,0])displayFront();
+    translate([0,displayY,0])displayFront();
     //board
     translate([boxX/2-boardX-thickness-1,boardHeight-thickness,28])rotate([0,90,0])mountPlate();
     
@@ -105,8 +105,8 @@ difference()
 {
 top();
     //translate([0,0,boxHeight/2+16])cube([boxX,boxY,boxHeight],center=true);
-    translate([-15,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    //translate([-15,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
     //translate([100,0,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
-    translate([0,-85,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
-    translate([0,95,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    //translate([0,-87,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
+    //translate([0,95,boxHeight/2])cube([boxX,boxY,boxHeight],center=true);
 }
